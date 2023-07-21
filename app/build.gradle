@@ -1,0 +1,108 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-parcelize'
+    id 'kotlin-kapt'
+}
+
+android {
+    namespace 'com.osamaaftab.teya'
+    compileSdk 33
+
+    defaultConfig {
+        applicationId "com.osamaaftab.teya"
+        minSdk 21
+        targetSdk 33
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "com.osamaaftab.teya.MockTestRunner"
+        vectorDrawables {
+            useSupportLibrary true
+        }
+    }
+
+    dataBinding {
+        enabled = true
+    }
+
+    testOptions {
+        unitTests.returnDefaultValues = true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    packagingOptions {
+        resources {
+            excludes += '/META-INF/{AL2.0,LGPL2.1}'
+        }
+    }
+}
+
+dependencies {
+    implementation "androidx.appcompat:appcompat:$appcompact_version"
+    implementation "androidx.core:core-ktx:$core_ktx_version"
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_runtime_ktx_version"
+    implementation "androidx.constraintlayout:constraintlayout:$constraintlayout_version"
+    implementation "junit:junit:$junit_version"
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:$swiperefreshlayout_version"
+    implementation "androidx.recyclerview:recyclerview:$recyclerview_version"
+    implementation "androidx.cardview:cardview:$cardview_version"
+    implementation "com.tbuonomo:dotsindicator:$dotsindicator_version"
+
+    //APIService dependencies
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-moshi:$converter_moshi_version"
+    implementation "com.squareup.moshi:moshi:$moshi_version"
+    implementation "com.squareup.okhttp3:logging-interceptor:$logging_interceptor_version"
+    implementation "com.squareup.okhttp3:okhttp:$okhttp_version"
+    implementation "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:$coroutines_adapter_version"
+    implementation "androidx.viewpager2:viewpager2:$viewpager2_version"
+    implementation "androidx.test:monitor:$test_monitor_version"
+    implementation "androidx.test:runner:$test_runner_version"
+    androidTestImplementation "com.squareup.okhttp3:mockwebserver:$web_mock_server_version"
+
+    //Koin dependencies
+    implementation "io.insert-koin:koin-core:$koin_version"
+    implementation "io.insert-koin:koin-android:$koin_version"
+
+    //glide dependencies
+    implementation "com.github.bumptech.glide:glide:$glide_version"
+    kapt "com.github.bumptech.glide:compiler:$glide_compiler_version"
+    implementation "com.github.bumptech.glide:okhttp3-integration:$okhttp3_integration_version"
+    implementation "com.mikhaellopez:circularprogressbar:$circularprogressbar_version"
+
+    //Test dependencies
+    testImplementation "io.mockk:mockk:$mockk_version"
+    testImplementation "io.insert-koin:koin-test:$koin_version"
+    testImplementation "androidx.arch.core:core-testing:$core_testing_version"
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutine_test_version"
+    androidTestImplementation "androidx.test.ext:junit:$ext_junit_version"
+    androidTestImplementation "androidx.test:core-ktx:$core_ktx_version"
+
+    //Leak Canary dependencies
+    debugImplementation "com.squareup.leakcanary:leakcanary-android:$leak_canary_version"
+
+    // Espresso dependencies
+    implementation "androidx.test.espresso:espresso-core:$espresso_version"
+    implementation "androidx.test.espresso:espresso-contrib:$espresso_version"
+    implementation "androidx.test.espresso:espresso-intents:$espresso_version"
+    implementation "androidx.test.espresso:espresso-accessibility:$espresso_version"
+    implementation "androidx.test.espresso:espresso-web:$espresso_version"
+    implementation "androidx.test.espresso.idling:idling-concurrent:$espresso_version"
+    androidTestImplementation "io.insert-koin:koin-test-junit4:$koin_version"
+
+    //Size unit dependencies
+    implementation "com.intuit.ssp:ssp-android:$size_unit_version"
+    implementation "com.intuit.sdp:sdp-android:$size_unit_version"
+}

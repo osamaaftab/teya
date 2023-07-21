@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Teya</string>
+    <string name="search">Search</string>
+    <string name="search_hint">Search your favourite artist</string>
+    <!--
+        https://github.com/square/leakcanary/issues/2380
+        Issue with the leak canary and junit
+    -->
+    <string name="leak_canary_test_class_name">assertk.Assert</string>
+</resources>
